@@ -237,11 +237,6 @@ footer{padding:5rem 1.5rem 3rem;text-align:center;position:relative;z-index:3;}
   font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;padding:.8rem 1.6rem;border-radius:999px;
   transition:background .3s,color .3s;cursor:pointer;background:transparent;}
 #cardDownloadBtn:hover{background:var(--gold);color:var(--ink);}
-#pdfDownloadBtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold-dim);background:transparent;
-  color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;
-  transition:background .3s,color .3s,border-color .3s;}
-#pdfDownloadBtn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
-#pdfDownloadBtn:disabled{opacity:.4;cursor:default;}
 
 /* ── ADMIN CHROME ── */
 #adminBar{position:fixed;top:0;left:0;right:0;z-index:400;display:none;align-items:center;justify-content:space-between;
@@ -528,13 +523,6 @@ body.pdf-capturing #envelope{display:none!important;}
 
   <div class="foot-tools no-pdf">
     <a id="cardDownloadBtn" class="no-pdf" href="wedding-card.png" download="Sahal-Weds-Rabiya-Wedding-Card.png" onclick="cardDownloadHint()">↓ SAVE THE WEDDING CARD</a>
-  </div>
-  <div class="foot-tools no-pdf">
-    <button id="pdfDownloadBtn" class="no-pdf" type="button" aria-label="Download the invitation as a PDF" title="Download as PDF">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3v12"></path><path d="M7 11l5 5 5-5"></path><path d="M4 20h16"></path>
-      </svg>
-    </button>
   </div>
 
   <div class="foot-credit no-pdf">
@@ -974,8 +962,6 @@ async function downloadPDF(){
     btn.disabled = false;
   }
 }
-document.getElementById('pdfDownloadBtn').addEventListener('click', downloadPDF);
-
 function cardDownloadHint(){ showToast('Saving the card... if it opens instead, press and hold to save.'); }
 
 document.addEventListener('DOMContentLoaded', () => {
