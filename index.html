@@ -21,8 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Upright:wght@300;400;500&family=Inter+Tight:wght@300;400;500&family=Amiri:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
-<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <style>
 :root{
@@ -530,23 +528,13 @@ body.pdf-capturing #envelope{display:none!important;}
 </div>
 
 <script>
-// ── FIREBASE CONFIG ──
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyAwCV6Ys8dQAW-BS0u_DSiK9_H3uQgf8dA",
-  authDomain: "sahalweds.firebaseapp.com",
-  databaseURL: "https://sahalweds-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "sahalweds",
-  storageBucket: "sahalweds.firebasestorage.app",
-  messagingSenderId: "419161390431",
-  appId: "1:419161390431:web:e5fc4df374568de763caea",
-  measurementId: "G-F0ZB7GPE07"
-};
+// ── DATABASE CONFIG ──
+const DB_URL       = "https://sahalweds-default-rtdb.asia-southeast1.firebasedatabase.app";
 const WISH_PATH    = "sahal-rabiya-v1/wishes";
 const ADMIN_PIN    = "2026SR";
 const LS           = "sr_";
 const COUPLE_LABEL = "Sahal & Rabiya";
 
-let db = null;
 let adminMode = false;
 
 // ── ENVELOPE ──
@@ -743,28 +731,28 @@ function _bgmPick(){
   inp.click();
 }
 
-// ── WISHES (Firebase Realtime Database) ──
-let _allWishes = [], _wishesShown = 6, _recentTs = 0, _wishesBound = false;
+// ── WISHES (Firebase RTDB REST API) ──
+let _allWishes = [], _wishesShown = 6, _recentTs = 0;
 const WISH_PAGE = 6;
 
-function loadWishes(){
-  if(!db || _wishesBound) return;
-  _wishesBound = true;
-  db.ref(WISH_PATH).orderByKey().limitToLast(200).on('value', snap => {
+async function loadWishes(){
+  try{
+    const res = await fetch(`${DB_URL}/${WISH_PATH}.json`);
+    const data = await res.json();
     const all = [];
-    if(snap.exists()){
-      snap.forEach(c => {
-        const v = c.val();
-        if(v && (v.name || v.msg)){ v.key = c.key; all.push(v); }
+    if(data && typeof data === 'object'){
+      Object.keys(data).forEach(k => {
+        const v = data[k];
+        if(v && (v.name || v.msg)){ v.key = k; all.push(v); }
       });
     }
-    all.reverse();
+    all.sort((a, b) => (b.ts || 0) - (a.ts || 0));
     _allWishes = all;
     const n = all.length;
     document.getElementById('wishCount').textContent =
       n ? (n + (n === 1 ? ' Wish & Blessing' : ' Wishes & Blessings')) : "Be the first to send your du'a";
     renderWishes();
-  });
+  }catch(e){ console.warn('Could not load wishes', e); }
 }
 function renderWishes(){
   const grid = document.getElementById('wgrid');
@@ -816,10 +804,19 @@ function wishCard(w){
   }
   return card;
 }
-function likeWish(key){
+async function likeWish(key){
   if(localStorage.getItem(LS + 'liked_' + key)) return;
   localStorage.setItem(LS + 'liked_' + key, '1');
-  if(db) db.ref(WISH_PATH + '/' + key + '/likes').transaction(n => (n || 0) + 1);
+  const item = _allWishes.find(x => x.key === key);
+  const nextLikes = ((item && item.likes) || 0) + 1;
+  if(item){ item.likes = nextLikes; renderWishes(); }
+  try{
+    await fetch(`${DB_URL}/${WISH_PATH}/${key}/likes.json`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(nextLikes)
+    });
+  }catch(e){}
 }
 function openReplyEditor(card, w){
   if(card.querySelector('.wreply-edit')) return;
@@ -836,29 +833,41 @@ function openReplyEditor(card, w){
   card.appendChild(box);
   ta.focus();
   cancel.onclick = () => box.remove();
-  save.onclick = () => {
+  save.onclick = async () => {
     const msg = ta.value.trim();
     if(!msg){ showToast('Write a reply first', true); return; }
     save.disabled = true;
-    db.ref(WISH_PATH + '/' + w.key + '/reply').set({ msg, ts: Date.now() }, err => {
-      save.disabled = false;
-      if(err){ showToast('Could not save -- try again', true); return; }
-      box.remove(); showToast('REPLY SAVED');
-    });
+    try{
+      const res = await fetch(`${DB_URL}/${WISH_PATH}/${w.key}/reply.json`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ msg, ts: Date.now() })
+      });
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      box.remove();
+      await loadWishes();
+      showToast('REPLY SAVED');
+    }catch(e){
+      showToast('Could not save -- try again', true);
+    }finally{ save.disabled = false; }
   };
-  del.onclick = () => {
-    db.ref(WISH_PATH + '/' + w.key + '/reply').remove(() => { box.remove(); showToast('REPLY REMOVED'); });
+  del.onclick = async () => {
+    try{
+      await fetch(`${DB_URL}/${WISH_PATH}/${w.key}/reply.json`, { method: 'DELETE' });
+      box.remove();
+      await loadWishes();
+      showToast('REPLY REMOVED');
+    }catch(e){ showToast('Could not remove -- try again', true); }
   };
 }
 function loadMore(){ _wishesShown += WISH_PAGE; renderWishes(); }
-function submitWish(){
+async function submitWish(){
   const nameEl = document.getElementById('wisherName');
   const msgEl = document.getElementById('wisherMsg');
   const n = nameEl.value.trim(), m = msgEl.value.trim();
   if(!n || !m){ showToast('Please enter your name and a wish.', true); return; }
   const ts = Date.now();
   if(ts - _recentTs < 5000){ showToast('Please wait a moment before sending another wish.', true); return; }
-  if(!db){ showToast('Still connecting -- try again in a moment.', true); return; }
   const btn = document.getElementById('wishSend');
   btn.disabled = true; btn.style.opacity = '.5';
   const data = {
@@ -868,13 +877,22 @@ function submitWish(){
     ts: ts,
     likes: 0
   };
-  db.ref(WISH_PATH).push().set(data, err => {
-    btn.disabled = false; btn.style.opacity = '';
-    if(err){ showToast('Could not send -- check your connection and try again.', true); return; }
+  try{
+    const res = await fetch(`${DB_URL}/${WISH_PATH}.json`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if(!res.ok) throw new Error('HTTP ' + res.status);
     _recentTs = ts;
     nameEl.value = ''; msgEl.value = '';
+    await loadWishes();
     showToast('Your blessing has been sent');
-  });
+  }catch(e){
+    showToast('Could not send -- check your connection and try again.', true);
+  }finally{
+    btn.disabled = false; btn.style.opacity = '';
+  }
 }
 
 // ── ADMIN ──
@@ -962,11 +980,7 @@ async function downloadPDF(){
 function cardDownloadHint(){ showToast('Saving the card... if it opens instead, press and hold to save.'); }
 
 document.addEventListener('DOMContentLoaded', () => {
-  try{
-    firebase.initializeApp(FIREBASE_CONFIG);
-    db = firebase.database();
-    loadWishes();
-  }catch(e){ console.warn('Firebase init failed', e); }
+  loadWishes();
   try{ if(sessionStorage.getItem(LS + 'admin') === '1') enterAdmin(); }catch(e){}
 });
 </script>
