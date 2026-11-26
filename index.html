@@ -18,6 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Upright:wght@300;400;500&family=Inter+Tight:wght@300;400;500&family=Amiri:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <style>
 :root{
@@ -541,10 +543,23 @@ body.pdf-capturing #envelope{display:none!important;}
 </div>
 
 <script>
+// ── FIREBASE CONFIG ──
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAwCV6Ys8dQAW-BS0u_DSiK9_H3uQgf8dA",
+  authDomain: "sahalweds.firebaseapp.com",
+  databaseURL: "https://sahalweds-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "sahalweds",
+  storageBucket: "sahalweds.firebasestorage.app",
+  messagingSenderId: "419161390431",
+  appId: "1:419161390431:web:e5fc4df374568de763caea",
+  measurementId: "G-F0ZB7GPE07"
+};
+const WISH_PATH    = "sahal-rabiya-v1/wishes";
 const ADMIN_PIN    = "2026SR";
 const LS           = "sr_";
 const COUPLE_LABEL = "Sahal & Rabiya";
 
+let db = null;
 let adminMode = false;
 
 // ── ENVELOPE ──
@@ -741,22 +756,28 @@ function _bgmPick(){
   inp.click();
 }
 
-// ── WISHES (localStorage-backed, works offline & on any static host) ──
-let _allWishes = [], _wishesShown = 6, _recentTs = 0;
+// ── WISHES (Firebase Realtime Database) ──
+let _allWishes = [], _wishesShown = 6, _recentTs = 0, _wishesBound = false;
 const WISH_PAGE = 6;
 
-function readWishes(){
-  try{ return JSON.parse(localStorage.getItem(LS + 'wishes') || '[]'); }catch(e){ return []; }
-}
-function saveWishes(arr){
-  try{ localStorage.setItem(LS + 'wishes', JSON.stringify(arr)); }catch(e){}
-}
 function loadWishes(){
-  _allWishes = readWishes();
-  const n = _allWishes.length;
-  document.getElementById('wishCount').textContent =
-    n ? (n + (n === 1 ? ' Wish & Blessing' : ' Wishes & Blessings')) : "Be the first to send your du'a";
-  renderWishes();
+  if(!db || _wishesBound) return;
+  _wishesBound = true;
+  db.ref(WISH_PATH).orderByKey().limitToLast(200).on('value', snap => {
+    const all = [];
+    if(snap.exists()){
+      snap.forEach(c => {
+        const v = c.val();
+        if(v && (v.name || v.msg)){ v.key = c.key; all.push(v); }
+      });
+    }
+    all.reverse();
+    _allWishes = all;
+    const n = all.length;
+    document.getElementById('wishCount').textContent =
+      n ? (n + (n === 1 ? ' Wish & Blessing' : ' Wishes & Blessings')) : "Be the first to send your du'a";
+    renderWishes();
+  });
 }
 function renderWishes(){
   const grid = document.getElementById('wgrid');
@@ -811,9 +832,7 @@ function wishCard(w){
 function likeWish(key){
   if(localStorage.getItem(LS + 'liked_' + key)) return;
   localStorage.setItem(LS + 'liked_' + key, '1');
-  const list = readWishes();
-  const item = list.find(x => x.key === key);
-  if(item){ item.likes = (item.likes || 0) + 1; saveWishes(list); loadWishes(); }
+  if(db) db.ref(WISH_PATH + '/' + key + '/likes').transaction(n => (n || 0) + 1);
 }
 function openReplyEditor(card, w){
   if(card.querySelector('.wreply-edit')) return;
@@ -833,16 +852,15 @@ function openReplyEditor(card, w){
   save.onclick = () => {
     const msg = ta.value.trim();
     if(!msg){ showToast('Write a reply first', true); return; }
-    const list = readWishes();
-    const item = list.find(x => x.key === w.key);
-    if(item){ item.reply = { msg, ts: Date.now() }; saveWishes(list); loadWishes(); }
-    showToast('REPLY SAVED');
+    save.disabled = true;
+    db.ref(WISH_PATH + '/' + w.key + '/reply').set({ msg, ts: Date.now() }, err => {
+      save.disabled = false;
+      if(err){ showToast('Could not save -- try again', true); return; }
+      box.remove(); showToast('REPLY SAVED');
+    });
   };
   del.onclick = () => {
-    const list = readWishes();
-    const item = list.find(x => x.key === w.key);
-    if(item){ delete item.reply; saveWishes(list); loadWishes(); }
-    showToast('REPLY REMOVED');
+    db.ref(WISH_PATH + '/' + w.key + '/reply').remove(() => { box.remove(); showToast('REPLY REMOVED'); });
   };
 }
 function loadMore(){ _wishesShown += WISH_PAGE; renderWishes(); }
@@ -853,20 +871,23 @@ function submitWish(){
   if(!n || !m){ showToast('Please enter your name and a wish.', true); return; }
   const ts = Date.now();
   if(ts - _recentTs < 5000){ showToast('Please wait a moment before sending another wish.', true); return; }
-  _recentTs = ts;
-  const list = readWishes();
-  list.unshift({
-    key: 'w_' + ts,
+  if(!db){ showToast('Still connecting -- try again in a moment.', true); return; }
+  const btn = document.getElementById('wishSend');
+  btn.disabled = true; btn.style.opacity = '.5';
+  const data = {
     name: n,
     msg: m,
     time: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }),
     ts: ts,
     likes: 0
+  };
+  db.ref(WISH_PATH).push().set(data, err => {
+    btn.disabled = false; btn.style.opacity = '';
+    if(err){ showToast('Could not send -- check your connection and try again.', true); return; }
+    _recentTs = ts;
+    nameEl.value = ''; msgEl.value = '';
+    showToast('Your blessing has been sent');
   });
-  saveWishes(list);
-  nameEl.value = ''; msgEl.value = '';
-  loadWishes();
-  showToast('Your blessing has been sent');
 }
 
 // ── ADMIN ──
@@ -956,7 +977,11 @@ document.getElementById('pdfDownloadBtn').addEventListener('click', downloadPDF)
 function cardDownloadHint(){ showToast('Saving the card... if it opens instead, press and hold to save.'); }
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadWishes();
+  try{
+    firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.database();
+    loadWishes();
+  }catch(e){ console.warn('Firebase init failed', e); }
   try{ if(sessionStorage.getItem(LS + 'admin') === '1') enterAdmin(); }catch(e){}
 });
 </script>
