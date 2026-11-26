@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ede3cf">
+
+<title>Sahal &amp; Rabiya | Wedding Invitation</title>
+<meta name="description" content="Wedding Reception of Sahal &amp; Rabiya — 13 December 2026, Walk Avenue Convention Centre, Kochi. You are lovingly invited.">
+
+<!-- ── OG / WHATSAPP PREVIEW ── -->
+<meta property="og:title" content="Sahal Weds Rabiya | Wedding Invitation">
+<meta property="og:description" content="13 December 2026 · Walk Avenue Convention Centre, Kochi — You are lovingly invited.">
+<meta property="og:image" content="wedding-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Upright:wght@300;400;500&family=Inter+Tight:wght@300;400;500&family=Amiri:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ede3cf; --bg-2:#f4ecdd; --bg-3:#e3d6bb;   /* beige ground */
+  --ink:#1e1710;                                    /* text ON gold (buttons, ribbons) */
+  --text:#2c2318;                                   /* body text on beige */
+  --gold:#9a7737; --gold-2:#86662c; --gold-hi:#6b5020;
+  --gold-dim:rgba(154,119,55,.5);
+  --line:rgba(154,119,55,.32);
+  --serif:'Fraunces',serif;
+  --italic:'Cormorant Garamond',serif;
+  --micro:'Inter Tight',sans-serif;
+  --arabic:'Amiri',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+html,body{background:var(--bg);color:var(--text);font-family:var(--serif);scroll-behavior:smooth;}
+body{overflow-x:hidden;}
+::selection{background:var(--gold);color:var(--ink);}
+
+.page{position:relative;min-height:100vh;
+  background:
+    radial-gradient(1200px 800px at 80% -10%,rgba(176,141,91,.08),transparent 60%),
+    radial-gradient(900px 700px at -20% 40%,rgba(176,141,91,.05),transparent 60%),
+    linear-gradient(180deg,#f3ebdb 0%,#ede3cf 40%,#ede3cf 100%);
+  overflow:hidden;}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/></svg>");}
+#dust{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:1;}
+
+/* ── ENVELOPE ── */
+#envelope{position:fixed;inset:0;z-index:200;background:radial-gradient(800px 600px at 50% 50%,#f1e8d7 0%,#e4d7bd 70%);display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s;}
+#envelope.gone{opacity:0;visibility:hidden;pointer-events:none;}
+.env-wrap{width:min(320px,80vw);aspect-ratio:1.45/1;position:relative;perspective:1200px;cursor:pointer;}
+.env-body{position:absolute;inset:0;background:linear-gradient(180deg,#f8f2e6,#efe6d4);border:1px solid var(--gold-dim);box-shadow:0 30px 80px rgba(60,44,20,.28),inset 0 0 0 1px rgba(176,141,91,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;overflow:hidden;}
+.env-body::before{content:"";position:absolute;inset:8px;border:1px solid var(--gold-dim);pointer-events:none;}
+.env-flap{position:absolute;left:0;right:0;top:0;height:56%;background:linear-gradient(180deg,#fbf6ec,#f1e8d7);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1.4s cubic-bezier(.6,0,.2,1);border-bottom:1px solid var(--gold-dim);z-index:3;}
+.env-wrap.open .env-flap{transform:rotateX(-180deg);}
+.env-seal{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f3dfa1,#b08d5b 55%,#6a4f1e);box-shadow:0 6px 20px rgba(176,141,91,.35),inset 0 -4px 8px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;font-family:var(--arabic);color:#2a1f08;font-size:.9rem;font-weight:700;line-height:1;text-align:center;z-index:4;transition:transform 1.2s,opacity .6s;}
+.env-wrap.open .env-seal{transform:translate(-50%,-120%) scale(.6);opacity:0;}
+.env-monogram{font-family:var(--arabic);font-size:2.2rem;color:var(--gold-hi);line-height:1;}
+.env-rule{width:80px;height:1px;background:var(--gold);opacity:.8;}
+.env-names{font-family:var(--micro);font-size:.62rem;letter-spacing:.35em;color:var(--text);opacity:.85;}
+.env-date{font-family:var(--italic);font-style:italic;font-size:.95rem;color:var(--gold-2);}
+.env-cta{position:absolute;bottom:-2.4rem;left:50%;transform:translateX(-50%);font-family:var(--micro);font-size:.58rem;letter-spacing:.4em;color:var(--gold);opacity:.75;white-space:nowrap;}
+.env-cta::before,.env-cta::after{content:"";display:inline-block;width:20px;height:1px;background:var(--gold);vertical-align:middle;margin:0 .6rem;opacity:.6;}
+
+/* ── TOP BAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(237,227,207,.85),transparent);backdrop-filter:blur(6px);pointer-events:none;}
+.topbar .mono{font-family:var(--arabic);color:var(--gold-hi);font-size:1.2rem;}
+.topbar .tag{font-family:var(--micro);font-size:.52rem;letter-spacing:.3em;color:var(--text);opacity:.55;}
+
+/* ── HERO ── */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6rem 1.5rem 5rem;text-align:center;z-index:3;overflow:hidden;}
+#hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.07;background:linear-gradient(180deg,#f3ebdb,#ede3cf);}
+#hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(237,227,207,.55) 0%,rgba(237,227,207,.45) 35%,rgba(237,227,207,.65) 100%);z-index:1;}
+#hero > *{position:relative;z-index:2;}
+
+.hero-frame{position:absolute;inset:3.5rem 1.2rem;border:1px solid var(--gold-dim);pointer-events:none;mask:linear-gradient(180deg,#000 0,#000 calc(100% - 10rem),transparent 100%);z-index:1!important;}
+.hero-frame::before,.hero-frame::after{content:"";position:absolute;width:22px;height:22px;border:1px solid var(--gold);}
+.hero-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.hero-frame::after{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+.hero-corner-bl,.hero-corner-br{position:absolute;width:22px;height:22px;border:1px solid var(--gold);}
+.hero-corner-bl{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+.hero-corner-br{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+.hero-arabic{font-family:var(--arabic);color:var(--gold-hi);font-size:2rem;line-height:1.4;margin-bottom:.5rem;opacity:0;animation:riseIn 1.6s .3s forwards cubic-bezier(.2,.7,.2,1);}
+.hero-arabic-en{font-family:var(--italic);font-style:italic;color:var(--text);opacity:.55;font-size:.82rem;letter-spacing:.04em;margin-bottom:2rem;animation:riseIn 1.4s .6s both cubic-bezier(.2,.7,.2,1);}
+.hero-gline{width:180px;height:1px;background:var(--gold);opacity:.8;margin:0 auto 1.4rem;animation:lineIn 1.2s .9s both;}
+@keyframes lineIn{from{width:0;opacity:0;}to{width:180px;opacity:.8;}}
+.hero-name{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--text);font-size:clamp(2.7rem,12.5vw,4.4rem);line-height:.95;letter-spacing:-.02em;font-variation-settings:"opsz" 144;}
+.hero-name .shine{display:inline-block;padding:0 .16em;background:linear-gradient(100deg,#2c2318 0%,#6b5020 40%,#b08d5b 50%,#6b5020 60%,#2c2318 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite;}
+.hero-amp{font-family:var(--arabic);color:var(--gold);font-size:1.8rem;font-weight:400;display:block;margin:.3rem 0;}
+.hero-stars{color:var(--gold);font-size:1.1rem;letter-spacing:.4rem;margin:1.5rem 0 1rem;animation:riseIn 1.4s 1.5s both;}
+.hero-date{font-family:var(--micro);color:rgba(44,35,24,.85);font-size:.72rem;letter-spacing:.25em;margin-bottom:.3rem;animation:riseIn 1.4s 1.7s both;}
+.hero-place{margin-top:.8rem;font-family:var(--italic);font-style:italic;color:var(--gold-2);font-size:.95rem;letter-spacing:.08em;animation:riseIn 1.4s 2s both;}
+@keyframes shine{0%,100%{background-position:120% 0;}50%{background-position:-120% 0;}}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── COUNTDOWN ── */
+.countdown-wrap{margin-top:1.75rem;display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;width:min(340px,100%);animation:riseIn 1.4s 2.15s both;}
+.cd-box{padding:.7rem .35rem;border:1px solid var(--line);background:rgba(255,252,246,.32);backdrop-filter:blur(3px);}
+.cd-num{font-family:var(--serif);font-size:1.55rem;font-weight:300;color:var(--gold-hi);line-height:1.1;font-variation-settings:"opsz" 144;}
+.cd-lbl{font-family:var(--micro);font-size:.48rem;letter-spacing:.28em;color:var(--gold);margin-top:.25rem;text-transform:uppercase;}
+
+/* ── SPOTLIGHT QUOTE PHOTO ── */
+#spotlight{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:2.5rem 1.25rem;z-index:61;}
+.spot-box{position:relative;width:100%;max-width:540px;height:min(80vh,700px);border:1px solid var(--gold-dim);overflow:hidden;box-shadow:0 24px 60px rgba(44,35,24,.18);background:#f5efe4;}
+.spot-box::before{content:"";position:absolute;inset:10px;border:1px solid rgba(154,119,55,.42);z-index:3;pointer-events:none;}
+.spot-corner{position:absolute;width:18px;height:18px;border:1.5px solid var(--gold);z-index:4;pointer-events:none;}
+.spot-corner.tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+.spot-corner.tr{top:10px;right:10px;border-left:none;border-bottom:none;}
+.spot-corner.bl{bottom:10px;left:10px;border-right:none;border-top:none;}
+.spot-corner.br{bottom:10px;right:10px;border-left:none;border-top:none;}
+.spot-img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;}
+.spot-film{position:absolute;inset:0;z-index:1;background:rgba(255,255,255,.36);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);pointer-events:none;}
+.spot-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.8rem;text-align:center;background:radial-gradient(ellipse 86% 48% at 50% 50%,rgba(24,18,12,.52) 0%,rgba(24,18,12,.22) 60%,transparent 100%);}
+.spot-rule{width:76px;height:1px;background:linear-gradient(90deg,transparent,#f3dfa1,transparent);margin:0 auto 1.1rem;}
+.spot-shine{display:inline-block;padding:0 .12em;background:linear-gradient(100deg,#d4a238 0%,#ffe999 35%,#fff8dc 50%,#f3dfa1 65%,#c58f24 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite;}
+.spot-ar{font-family:var(--arabic);font-size:clamp(1.65rem,5.8vw,2.25rem);line-height:1.65;direction:rtl;margin-bottom:.55rem;}
+.spot-en{font-family:var(--italic);font-style:italic;font-weight:400;font-size:clamp(1.1rem,3.6vw,1.35rem);line-height:1.5;letter-spacing:.03em;}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:3;padding:5rem 1.5rem;}
+.eyebrow{font-family:var(--micro);font-size:.58rem;letter-spacing:.4em;color:var(--gold);text-align:center;display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:1rem;}
+.eyebrow::before,.eyebrow::after{content:"";width:30px;height:1px;background:var(--gold);opacity:.6;}
+.section-title{font-family:var(--serif);font-style:italic;font-weight:300;font-size:2.6rem;color:var(--text);text-align:center;line-height:1.05;margin-bottom:2.5rem;font-variation-settings:"opsz" 144;}
+.section-title em{color:var(--gold-hi);font-style:italic;}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv-d1{transition-delay:.1s;} .rv-d2{transition-delay:.2s;} .rv-d3{transition-delay:.3s;}
+
+/* ── EVENTS ── */
+.event{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.12));border:1px solid var(--line);margin-bottom:1.25rem;overflow:hidden;}
+.event::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform 1.2s ease;}
+.event.in::before{transform:scaleX(1);}
+.event-inner{padding:1.75rem 1.4rem;}
+.event-num{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem;}
+.event-num .n{font-family:var(--serif);font-size:2.2rem;color:var(--gold-hi);font-weight:300;line-height:1;font-variation-settings:"opsz" 144;}
+.event-num .lbl{font-family:var(--micro);font-size:.55rem;letter-spacing:.4em;color:var(--gold);}
+.event-title{font-family:var(--serif);font-style:italic;font-weight:300;font-size:2.2rem;color:var(--text);line-height:1;margin-bottom:1.2rem;}
+.event-row{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1rem;align-items:baseline;padding:.7rem 0;border-top:1px solid var(--line);}
+.event-row .k{font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;}
+.event-row .v{font-family:var(--italic);font-style:italic;color:var(--text);opacity:.85;font-size:1rem;line-height:1.4;}
+.event-row .v strong{font-style:normal;font-family:var(--serif);font-weight:400;color:var(--gold-hi);}
+.event-btns{display:flex;gap:.5rem;margin-top:1.2rem;flex-wrap:wrap;}
+.btn{position:relative;flex:1;min-width:0;padding:.85rem .5rem;background:transparent;color:var(--text);font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;cursor:pointer;border:1px solid var(--gold-dim);overflow:hidden;text-decoration:none;text-align:center;transition:color .3s;}
+.btn::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(100%);transition:transform .4s;z-index:-1;}
+.btn:hover{color:var(--ink);}
+.btn:hover::after{transform:translateY(0);}
+.btn.primary{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.btn.primary::after{background:var(--gold-hi);}
+.event.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(176,141,91,.05),transparent);}
+.event.featured .ribbon{padding:.45rem;background:var(--gold);color:var(--ink);font-family:var(--micro);font-size:.55rem;letter-spacing:.4em;text-align:center;}
+
+/* ── FAMILIES ── */
+.fam{padding:2rem 1.5rem;border:1px solid var(--line);text-align:center;position:relative;margin-bottom:1rem;}
+.fam-side{font-family:var(--micro);font-size:.55rem;letter-spacing:.4em;color:var(--gold);margin-bottom:.7rem;}
+.fam-name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:2.4rem;color:var(--text);line-height:1;margin-bottom:1rem;}
+.fam-rel{font-family:var(--italic);font-style:italic;color:var(--text);opacity:.45;font-size:.88rem;margin-bottom:.3rem;}
+.fam-parent{font-family:var(--serif);font-size:1.05rem;color:var(--gold-hi);line-height:1.5;font-weight:400;}
+.fam-house{font-family:var(--italic);font-style:italic;color:var(--text);opacity:.55;font-size:.92rem;line-height:1.5;margin-top:.5rem;}
+.fam-sib{font-family:var(--micro);font-size:.6rem;letter-spacing:.14em;color:var(--text);opacity:.5;margin-top:.9rem;line-height:1.9;}
+.fam-sib span{display:block;font-size:.5rem;letter-spacing:.4em;color:var(--gold);opacity:.9;margin-bottom:.25rem;}
+.fam-sep{text-align:center;margin:.5rem auto 1.5rem;color:var(--gold);opacity:.5;letter-spacing:.8em;font-size:.7rem;}
+
+/* ── WISHES ── */
+.rsvp-card{padding:2.25rem 1.5rem;border:1px solid var(--gold);background:rgba(255,252,246,.42);backdrop-filter:blur(4px);}
+.rsvp-card input,.rsvp-card textarea{width:100%;padding:.9rem 1rem;background:transparent;border:1px solid var(--line);font-family:var(--italic);font-style:italic;color:var(--text);font-size:1rem;margin-bottom:.75rem;transition:border-color .3s;}
+.rsvp-card input:focus,.rsvp-card textarea:focus{outline:none;border-color:var(--gold);}
+.rsvp-card textarea{resize:none;min-height:80px;}
+.rsvp-submit{width:100%;padding:1.1rem;background:var(--gold);color:var(--ink);font-family:var(--micro);font-size:.65rem;letter-spacing:.4em;border:none;cursor:pointer;transition:background .3s;}
+.rsvp-submit:hover{background:var(--gold-hi);color:#fbf6ec;}
+.wish-count{text-align:center;font-family:var(--micro);font-size:.6rem;letter-spacing:.3em;color:var(--gold);opacity:.7;margin:1.5rem 0;}
+.wish{padding:1.25rem;border-left:1px solid var(--gold);margin-bottom:.8rem;background:rgba(255,255,255,.3);}
+.wish .wn{font-family:var(--serif);font-style:italic;color:var(--gold-hi);font-size:1.1rem;margin-bottom:.3rem;}
+.wish .wm{font-family:var(--italic);font-style:italic;color:var(--text);opacity:.75;font-size:.98rem;line-height:1.55;}
+.wish .wd{font-family:var(--micro);font-size:.55rem;letter-spacing:.2em;color:var(--text);opacity:.4;margin-top:.6rem;}
+
+/* ── CONTACT ── */
+.contact{padding:1.5rem;border:1px solid var(--line);margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.contact-left .lbl{font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;color:var(--gold);margin-bottom:.4rem;}
+.contact-left .nm{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--text);font-weight:300;}
+.contact-right{display:flex;gap:.4rem;}
+.c-ic{width:40px;height:40px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);cursor:pointer;transition:all .3s;text-decoration:none;}
+.c-ic:hover{background:var(--gold);color:var(--ink);}
+
+/* ── FOOTER ── */
+footer{padding:5rem 1.5rem 3rem;text-align:center;position:relative;z-index:3;}
+.foot-rule{width:60%;max-width:240px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 2rem;}
+.foot-dua{font-family:var(--arabic);color:var(--gold-hi);font-size:2rem;line-height:1.6;margin-bottom:.5rem;}
+.foot-names{font-family:var(--serif);font-style:italic;font-size:2.2rem;color:var(--gold-hi);margin-bottom:.5rem;}
+.foot-date{font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;color:var(--text);opacity:.5;line-height:1.8;}
+.foot-credit{margin-top:3rem;font-family:var(--micro);font-size:.5rem;letter-spacing:.3em;color:var(--text);opacity:.35;}
+
+/* ── BGM ── */
+#bgmBtn{position:fixed;bottom:22px;right:18px;z-index:190;width:46px;height:46px;border-radius:50%;background:rgba(30,23,16,.9);border:1.5px solid rgba(176,141,91,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.16);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;padding:0}
+#bgmBtn .bgm-ring{position:absolute;inset:-4px;border-radius:50%;border:2px dashed rgba(212,181,122,.75);animation:bgmSpin 4s linear infinite;pointer-events:none;display:none}
+#bgmBtn.admin-mode .bgm-ring{display:block}
+@keyframes bgmSpin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(26,26,26,.95);color:#f2e8d9;padding:11px 20px;border-radius:999px;font-family:var(--micro);font-size:10.5px;letter-spacing:.2em;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;text-align:center;max-width:90vw;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.err{background:rgba(120,32,32,.95);}
+
+/* ── WISHES EXTRAS ── */
+.wish-empty{font-family:var(--italic);font-style:italic;font-size:1rem;color:var(--text);opacity:.5;text-align:center;padding:20px 0;}
+.wish .wf{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.6rem;}
+.wish .wd{margin-top:0;}
+.wlike{display:inline-flex;align-items:center;gap:.35rem;background:transparent;border:none;cursor:pointer;
+  color:var(--gold);opacity:.55;padding:.2rem;font-family:var(--micro);font-size:.58rem;letter-spacing:.12em;
+  transition:opacity .25s,transform .25s;}
+.wlike svg{fill:none;stroke:currentColor;stroke-width:1.5;}
+.wlike:hover{opacity:.9;}
+.wlike.liked{opacity:1;color:var(--gold-hi);transform:scale(1.06);}
+.wlike.liked svg{fill:currentColor;}
+.wreply{margin-top:.85rem;padding:.7rem .9rem;border-left:2px solid var(--gold);background:rgba(176,141,91,.06);}
+.wreply-lbl{font-family:var(--micro);font-size:.52rem;letter-spacing:.28em;color:var(--gold);margin-bottom:.35rem;}
+.wreply-msg{font-family:var(--italic);font-style:italic;color:var(--text);opacity:.8;font-size:.95rem;line-height:1.5;}
+.wadmin{margin-top:.7rem;background:transparent;border:1px solid var(--gold-dim);color:var(--gold);
+  font-family:var(--micro);font-size:.52rem;letter-spacing:.3em;padding:.45rem .9rem;cursor:pointer;}
+.wadmin:hover{background:var(--gold);color:var(--ink);}
+.wreply-edit{margin-top:.7rem;}
+.wreply-edit textarea{width:100%;min-height:70px;resize:none;padding:.7rem .8rem;background:transparent;
+  border:1px solid var(--line);color:var(--text);font-family:var(--italic);font-style:italic;font-size:.95rem;}
+.wreply-edit textarea:focus{outline:none;border-color:var(--gold);}
+.wreply-row{display:flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap;}
+.wreply-row button{flex:1;min-width:78px;padding:.55rem .4rem;background:var(--gold);color:var(--ink);border:none;
+  font-family:var(--micro);font-size:.52rem;letter-spacing:.28em;cursor:pointer;}
+.wreply-row button.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-dim);}
+
+/* ── FOOTER TOOLS ── */
+.foot-tools{margin-top:1.6rem;display:flex;justify-content:center;}
+#cardDownloadBtn{display:inline-block;border:1px solid var(--gold);color:var(--gold);text-decoration:none;
+  font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;padding:.8rem 1.6rem;border-radius:999px;
+  transition:background .3s,color .3s;cursor:pointer;background:transparent;}
+#cardDownloadBtn:hover{background:var(--gold);color:var(--ink);}
+#pdfDownloadBtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold-dim);background:transparent;
+  color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background .3s,color .3s,border-color .3s;}
+#pdfDownloadBtn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+#pdfDownloadBtn:disabled{opacity:.4;cursor:default;}
+
+/* ── ADMIN CHROME ── */
+#adminBar{position:fixed;top:0;left:0;right:0;z-index:400;display:none;align-items:center;justify-content:space-between;
+  gap:.8rem;padding:.6rem 1rem;background:rgba(154,119,55,.96);color:#fbf6ec;
+  font-family:var(--micro);font-size:.52rem;letter-spacing:.18em;}
+#adminBar.on{display:flex;}
+#adminBar button{background:#1e1710;color:#f3dfa1;border:none;padding:.4rem .9rem;
+  font-family:var(--micro);font-size:.5rem;letter-spacing:.28em;cursor:pointer;}
+#pinModal{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;
+  background:rgba(30,23,16,.72);backdrop-filter:blur(4px);padding:1.5rem;}
+#pinModal.on{display:flex;}
+.pin-card{width:min(320px,100%);border:1px solid var(--gold);background:#f7f1e5;padding:1.8rem 1.4rem;text-align:center;}
+.pin-ttl{font-family:var(--micro);font-size:.55rem;letter-spacing:.4em;color:var(--gold);margin-bottom:1.2rem;}
+.pin-card input{width:100%;padding:.9rem 1rem;background:transparent;border:1px solid var(--line);color:var(--text);
+  font-family:var(--micro);font-size:.8rem;letter-spacing:.3em;text-align:center;margin-bottom:.8rem;}
+.pin-card input:focus{outline:none;border-color:var(--gold);}
+.pin-row{display:flex;gap:.5rem;}
+.pin-row button{flex:1;padding:.8rem .4rem;background:var(--gold);color:var(--ink);border:none;
+  font-family:var(--micro);font-size:.55rem;letter-spacing:.3em;cursor:pointer;}
+.pin-row button.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-dim);}
+
+/* ── PDF / PRINT CAPTURE ── */
+body.pdf-capturing .no-pdf,
+body.pdf-capturing #bgmBtn,
+body.pdf-capturing #adminBar,
+body.pdf-capturing #pinModal,
+body.pdf-capturing .toast,
+body.pdf-capturing .scroll-hint,
+body.pdf-capturing #dust{display:none!important;}
+body.pdf-capturing .rv{opacity:1!important;transform:none!important;transition:none!important;}
+body.pdf-capturing #envelope{display:none!important;}
+@media print{
+  .no-pdf,#bgmBtn,#adminBar,#pinModal,.toast,.scroll-hint,#dust,#envelope{display:none!important;}
+  .rv{opacity:1!important;transform:none!important;transition:none!important;}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{transition:none;}
+}
+@media (min-width:720px){
+  section{padding:7rem 3rem;max-width:640px;margin:0 auto;}
+  .hero-name{font-size:clamp(3.4rem,8vw,5.4rem);}
+  .section-title{font-size:3.4rem;}
+  footer{padding:6rem 3rem 3rem;}
+}
+</style>
+</head>
+<body style="overflow-y: hidden;">
+<div class="page">
+<canvas id="dust"></canvas>
+<div class="grain"></div>
+
+<button id="bgmBtn" onclick="bgmToggle()" aria-label="Background music" style="z-index:190;">
+  <div class="bgm-ring"></div>
+  <svg id="bgmPlay" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e2c98a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+  </svg>
+  <svg id="bgmMute" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4b57a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+    <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle><line x1="3" y1="3" x2="21" y2="21"></line>
+  </svg>
+</button>
+<audio id="bgmAudio" loop preload="none" playsinline></audio>
+<div class="toast" id="toast"></div>
+
+<!-- ADMIN BAR -->
+<div id="adminBar" class="no-pdf">
+  <span>ADMIN MODE · tap the music icon to set an audio file, or reply to wishes below</span>
+  <button type="button" id="adminExit">EXIT</button>
+</div>
+
+<!-- ADMIN PIN -->
+<div id="pinModal" class="no-pdf">
+  <div class="pin-card">
+    <div class="pin-ttl">ADMIN ACCESS</div>
+    <input id="pinInput" type="password" inputmode="text" autocomplete="off" placeholder="Enter PIN">
+    <div class="pin-row">
+      <button type="button" id="pinGo">ENTER</button>
+      <button type="button" id="pinCancel" class="ghost">CANCEL</button>
+    </div>
+  </div>
+</div>
+
+<!-- ENVELOPE -->
+<div id="envelope">
+  <div class="env-wrap" id="envWrap" onclick="openEnv()">
+    <div class="env-body">
+      <div class="env-monogram">بسم الله</div>
+      <div class="env-rule"></div>
+      <div class="env-names">SAHAL &nbsp;·&nbsp; RABIYA</div>
+      <div class="env-date">Wedding Invitation · 13 December 2026</div>
+    </div>
+    <div class="env-flap"></div>
+    <div class="env-seal">نكاح</div>
+    <div class="env-cta">TAP TO OPEN</div>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="mono">بسم الله</div>
+  <div class="tag">DECEMBER · MMXXVI</div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-frame">
+    <div class="hero-corner-bl"></div>
+    <div class="hero-corner-br"></div>
+  </div>
+
+  <div class="hero-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="hero-arabic-en">In the name of Allah, the Most Gracious, the Most Merciful</div>
+
+  <div class="hero-gline"></div>
+  <div class="hero-name"><span class="shine">Sahal</span></div>
+  <div class="hero-amp">✦ weds ✦</div>
+  <div class="hero-name"><span class="shine">Rabiya</span></div>
+  <div class="hero-stars">✦ ✦ ✦</div>
+
+  <div class="hero-date">SUNDAY · 13 DECEMBER 2026</div>
+  <div class="hero-date">RECEPTION · 11:30 AM ONWARDS</div>
+  <div class="hero-place">Walk Avenue Convention Centre, Kochi</div>
+
+  <!-- COUNTDOWN TIMER -->
+  <div class="countdown-wrap" id="countdown" aria-label="Countdown to the Wedding Reception">
+    <div class="cd-box"><div class="cd-num" id="cdDays">00</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-box"><div class="cd-num" id="cdHours">00</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-box"><div class="cd-num" id="cdMins">00</div><div class="cd-lbl">Mins</div></div>
+    <div class="cd-box"><div class="cd-num" id="cdSecs">00</div><div class="cd-lbl">Secs</div></div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT QUOTE PHOTO -->
+<section id="spotlight">
+  <div class="spot-box rv">
+    <div class="spot-corner tl"></div>
+    <div class="spot-corner tr"></div>
+    <div class="spot-corner bl"></div>
+    <div class="spot-corner br"></div>
+    <img class="spot-img" src="couple-spotlight.jpg" alt="Sahal and Rabiya" loading="lazy">
+    <div class="spot-film"></div>
+    <div class="spot-copy">
+      <div class="spot-rule"></div>
+      <div class="spot-ar spot-shine">وَمِنَ الْحُبِّ نَبْدَأُ حَيَاة</div>
+      <div class="spot-en spot-shine">From love, we begin a life together.</div>
+    </div>
+  </div>
+</section>
+
+<!-- QURAN VERSE -->
+<section id="verse">
+  <div class="eyebrow rv">FROM THE HOLY QURAN</div>
+  <div class="rv rv-d1" style="text-align:center;padding:1.5rem;border:1px solid var(--line);background:linear-gradient(180deg,rgba(176,141,91,.04),transparent);">
+    <div style="width:60px;height:1px;background:var(--gold);opacity:.6;margin:0 auto 1.4rem;"></div>
+    <div style="font-family:'Amiri',serif;font-size:2rem;color:var(--gold-hi);line-height:1.8;margin-bottom:1rem;direction:rtl;">وَخَلَقْنَاكُمْ أَزْوَاجًا</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--text);opacity:.85;max-width:34ch;margin:0 auto .8rem;line-height:1.6;">
+      "And We created you in pairs."
+    </div>
+    <div style="font-family:var(--micro);font-size:.55rem;letter-spacing:.35em;color:var(--gold);opacity:.8;margin-top:.5rem;">HOLY QURAN · 78:08</div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="eyebrow rv">THE BLESSED OCCASION</div>
+  <h2 class="section-title rv">Join us for the<br><em>Celebration</em></h2>
+
+  <!-- Event 1: Reception -->
+  <div class="event featured rv rv-d1">
+    <div class="ribbon">✦ WEDDING RECEPTION</div>
+    <div class="event-inner">
+      <div class="event-num"><div class="lbl">RECEPTION</div></div>
+      <div class="event-title">Wedding Reception</div>
+      <div class="event-row"><div class="k">Date</div><div class="v"><strong>Sunday, 13 December 2026</strong></div></div>
+      <div class="event-row"><div class="k">Time</div><div class="v"><strong>11:30 AM Onwards</strong></div></div>
+      <div class="event-row"><div class="k">Venue</div><div class="v"><strong>Walk Avenue Convention Centre</strong><br><span style="opacity:.65">Kochi, Kerala</span></div></div>
+      <div class="event-btns">
+        <a class="btn" href="https://maps.app.goo.gl/WEn5WnDmxoDn2jKe8?g_st=ic" target="_blank" rel="noopener">📍 LOCATION</a>
+        <a class="btn" id="recGcal" href="#" target="_blank" rel="noopener">GOOGLE CAL</a>
+        <a class="btn" id="recIcal" href="#" download="sahal-rabiya-reception.ics">APPLE CAL</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event 2: Nikah Ceremony -->
+  <div class="event rv rv-d2">
+    <div class="event-inner">
+      <div class="event-num"><div class="lbl">HOLY NIKAH</div></div>
+      <div class="event-title">Nikah Ceremony</div>
+      <div class="event-row"><div class="k">Date</div><div class="v"><strong>Saturday, 12 December 2026</strong><br><span style="opacity:.65">02 Rajab 1448 AH</span></div></div>
+      <div class="event-btns">
+        <a class="btn" id="nikahGcal" href="#" target="_blank" rel="noopener">GOOGLE CAL</a>
+        <a class="btn" id="nikahIcal" href="#" download="sahal-rabiya-nikah.ics">APPLE CAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILIES -->
+<section id="families">
+  <div class="eyebrow rv">WITH THE BLESSINGS OF</div>
+  <h2 class="section-title rv">Our <em>Families</em></h2>
+
+  <div class="fam rv rv-d1">
+    <div class="fam-side">GROOM</div>
+    <div class="fam-name">Mohammed Sahal</div>
+    <div class="fam-rel">son of</div>
+    <div class="fam-parent">Abdul Salam &amp; Asma Salam</div>
+    <div class="fam-house">Pilakkal House · Kochi, Kerala 682002</div>
+    <div class="fam-sib"><span>SIBLINGS</span>Mohammed Ahal</div>
+  </div>
+
+  <div class="fam-sep">✦ &nbsp;❖&nbsp; ✦</div>
+
+  <div class="fam rv rv-d2">
+    <div class="fam-side">BRIDE</div>
+    <div class="fam-name">Rabiya</div>
+    <div class="fam-rel">daughter of</div>
+    <div class="fam-parent">Haneef K &amp; Suharabi Haneef</div>
+    <div class="fam-house">ESI Road · Palluruthy</div>
+  </div>
+</section>
+
+<!-- WISHES -->
+<section id="wishes">
+  <div class="eyebrow rv">DU'A &amp; BLESSINGS</div>
+  <h2 class="section-title rv">Send your heartfelt<br><em>Wishes &amp; Du'a</em></h2>
+
+  <div class="rsvp-card rv rv-d1" style="border-color:var(--line);">
+    <input type="text" id="wisherName" placeholder="Your Name">
+    <textarea id="wisherMsg" placeholder="Write your wishes and blessings for Sahal &amp; Rabiya..."></textarea>
+    <button class="rsvp-submit" id="wishSend" onclick="submitWish()">SEND WISHES ✦</button>
+  </div>
+
+  <div class="wish-count rv rv-d2" id="wishCount">Be the first to send your du'a</div>
+  <div id="wgrid"></div>
+  <div id="loadmore-wrap" style="display:none;text-align:center;margin-top:1.5rem;">
+    <button class="no-pdf" onclick="loadMore()" style="background:transparent;border:1px solid var(--gold-dim);color:var(--gold);font-family:var(--micro);font-size:.6rem;letter-spacing:.35em;padding:.85rem 2rem;cursor:pointer;">LOAD MORE</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="eyebrow rv">GET IN TOUCH</div>
+  <h2 class="section-title rv">Contact <em>Us</em></h2>
+
+  <div class="contact rv rv-d1">
+    <div class="contact-left">
+      <div class="lbl">GROOM'S FATHER</div>
+      <div class="nm">Abdul Salam</div>
+    </div>
+    <div class="contact-right">
+      <a class="c-ic" href="https://wa.me/918891141479" target="_blank" rel="noopener" title="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+      </a>
+      <a class="c-ic" href="tel:+918891141479" title="Call">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.2 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"></path></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact rv rv-d2">
+    <div class="contact-left">
+      <div class="lbl">BROTHER</div>
+      <div class="nm">Mohammed Ahal</div>
+    </div>
+    <div class="contact-right">
+      <a class="c-ic" href="https://wa.me/919746231479" target="_blank" rel="noopener" title="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+      </a>
+      <a class="c-ic" href="tel:+919746231479" title="Call">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.2 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-rule"></div>
+  <div class="foot-dua">بَارَكَ اللَّهُ لَكُمَا</div>
+  <div style="font-family:var(--italic);font-style:italic;color:var(--gold-2);font-size:.85rem;letter-spacing:.05em;margin-bottom:2rem;opacity:.75;">Barakallahu Lakuma — May Allah bless you both</div>
+  <div class="foot-rule"></div>
+  <div class="foot-names">Sahal &amp; Rabiya</div>
+  <div class="foot-date">13 · DECEMBER · 2026<br>WALK AVENUE CONVENTION CENTRE, KOCHI</div>
+
+  <div class="foot-tools no-pdf">
+    <a id="cardDownloadBtn" class="no-pdf" href="wedding-card.png" download="Sahal-Weds-Rabiya-Wedding-Card.png" onclick="cardDownloadHint()">↓ SAVE THE WEDDING CARD</a>
+  </div>
+  <div class="foot-tools no-pdf">
+    <button id="pdfDownloadBtn" class="no-pdf" type="button" aria-label="Download the invitation as a PDF" title="Download as PDF">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v12"></path><path d="M7 11l5 5 5-5"></path><path d="M4 20h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="foot-credit no-pdf">
+    <span id="adminBtn" style="cursor:pointer;padding:.3rem .7rem;border:1px solid rgba(176,141,91,.3);color:var(--gold);opacity:.5;font-family:var(--micro);font-size:.45rem;letter-spacing:.35em;">ADMIN</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const ADMIN_PIN    = "2026SR";
+const LS           = "sr_";
+const COUPLE_LABEL = "Sahal & Rabiya";
+
+let adminMode = false;
+
+// ── ENVELOPE ──
+let _envOpened = false;
+function openEnv(){
+  if(_envOpened) return;
+  _envOpened = true;
+  document.getElementById('envWrap').classList.add('open');
+  _bgmWantPlay = true;
+  if(_bgmReady && !_bgmUserPaused) _bgmAudio.play().catch(()=>{});
+  setTimeout(()=>{
+    const env = document.getElementById('envelope');
+    env.classList.add('gone');
+    setTimeout(()=>{ env.style.display = 'none'; }, 900);
+    document.body.style.overflowY = 'auto';
+    document.getElementById('bgmBtn').style.zIndex = '9000';
+  }, 1400);
+}
+setTimeout(()=>{ if(!document.getElementById('envWrap').classList.contains('open')) openEnv(); }, 6000);
+document.body.style.overflowY = 'hidden';
+
+// ── COUNTDOWN (13 December 2026, 11:30 AM IST) ──
+(function(){
+  const target = new Date('2026-12-13T11:30:00+05:30').getTime();
+  const dEl = document.getElementById('cdDays');
+  const hEl = document.getElementById('cdHours');
+  const mEl = document.getElementById('cdMins');
+  const sEl = document.getElementById('cdSecs');
+  function pad(n){ return String(Math.max(0, n)).padStart(2, '0'); }
+  function updateCountdown(){
+    const diff = Math.max(0, target - Date.now());
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+
+// ── GOLD DUST ──
+(function(){
+  const c = document.getElementById('dust'), ctx = c.getContext('2d');
+  let W, H, parts = [];
+  function resize(){
+    W = c.width = innerWidth * devicePixelRatio;
+    H = c.height = innerHeight * devicePixelRatio;
+    c.style.width = innerWidth + 'px';
+    c.style.height = innerHeight + 'px';
+  }
+  resize();
+  addEventListener('resize', resize);
+  for(let i = 0; i < 70; i++){
+    parts.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: (Math.random() * 1.6 + .3) * devicePixelRatio,
+      vx: (Math.random() - .5) * .25 * devicePixelRatio,
+      vy: (-Math.random() * .4 - .1) * devicePixelRatio,
+      a: Math.random() * .8 + .2,
+      tw: Math.random() * Math.PI * 2
+    });
+  }
+  let touchParticles = [];
+  function spawnBurst(cx, cy, count){
+    const dpr = devicePixelRatio || 1, px = cx * dpr, py = cy * dpr;
+    for(let i = 0; i < count; i++){
+      const angle = Math.random() * Math.PI * 2, speed = (Math.random() * 6 + 2) * dpr;
+      touchParticles.push({
+        x: px, y: py,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - Math.random() * 3 * dpr,
+        r: (Math.random() * 3 + 1) * dpr,
+        a: 1, decay: Math.random() * .025 + .018, tw: Math.random() * Math.PI * 2
+      });
+    }
+  }
+  document.addEventListener('touchstart', e => { for(const t of e.touches) spawnBurst(t.clientX, t.clientY, 28); }, {passive:true});
+  document.addEventListener('touchmove', e => { for(const t of e.touches){ if(Math.random() < .4) spawnBurst(t.clientX, t.clientY, 8); } }, {passive:true});
+  document.addEventListener('click', e => spawnBurst(e.clientX, e.clientY, 22));
+  let _raf = null;
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden){ cancelAnimationFrame(_raf); _raf = null; }
+    else if(!_raf){ _raf = requestAnimationFrame(tick); }
+  });
+  function tick(){
+    ctx.clearRect(0, 0, W, H);
+    for(const p of parts){
+      p.x += p.vx; p.y += p.vy; p.tw += .04;
+      if(p.y < -10) p.y = H + 10;
+      if(p.x < -10) p.x = W + 10;
+      if(p.x > W + 10) p.x = -10;
+      const fl = .5 + .5 * Math.sin(p.tw);
+      ctx.fillStyle = `rgba(134,102,44,${p.a * fl})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(134,102,44,${p.a * fl * .2})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2); ctx.fill();
+    }
+    for(let i = touchParticles.length - 1; i >= 0; i--){
+      const p = touchParticles[i];
+      p.x += p.vx; p.y += p.vy; p.vy += .12 * (devicePixelRatio || 1); p.vx *= .97; p.a -= p.decay; p.tw += .15;
+      if(p.a <= 0){ touchParticles.splice(i, 1); continue; }
+      const fl = .6 + .4 * Math.sin(p.tw);
+      ctx.fillStyle = `rgba(134,102,44,${p.a * fl * .25})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = `rgba(107,80,32,${p.a * fl})`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    _raf = requestAnimationFrame(tick);
+  }
+  _raf = requestAnimationFrame(tick);
+})();
+
+// ── REVEAL ──
+const io = new IntersectionObserver((es) => {
+  es.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, {threshold: .15});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// ── CALENDAR ──
+function gcal(title, s, e, loc){
+  const fmt = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${fmt(s)}/${fmt(e)}&location=${encodeURIComponent(loc)}`;
+}
+function ics(title, s, e, loc){
+  const fmt = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const v = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${fmt(s)}\nDTEND:${fmt(e)}\nSUMMARY:${title}\nLOCATION:${loc}\nEND:VEVENT\nEND:VCALENDAR`;
+  return 'data:text/calendar;charset=utf8,' + encodeURIComponent(v);
+}
+const recS = new Date('2026-12-13T11:30:00+05:30'), recE = new Date('2026-12-13T14:30:00+05:30');
+document.getElementById('recGcal').href = gcal("Sahal & Rabiya — Wedding Reception", recS, recE, "Walk Avenue Convention Centre, Kochi, Kerala");
+document.getElementById('recIcal').href = ics("Sahal & Rabiya — Wedding Reception", recS, recE, "Walk Avenue Convention Centre, Kochi, Kerala");
+
+const nikahS = new Date('2026-12-12T10:00:00+05:30'), nikahE = new Date('2026-12-12T12:00:00+05:30');
+document.getElementById('nikahGcal').href = gcal("Sahal & Rabiya — Nikah Ceremony (02 Rajab 1448)", nikahS, nikahE, "Kochi, Kerala");
+document.getElementById('nikahIcal').href = ics("Sahal & Rabiya — Nikah Ceremony (02 Rajab 1448)", nikahS, nikahE, "Kochi, Kerala");
+
+// ── TOAST ──
+let _toastTimer = null;
+function showToast(msg, isErr, ms){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.toggle('err', !!isErr);
+  t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), ms || 2600);
+}
+
+// ── BGM ──
+let _bgmReady = false, _bgmAdmin = false, _bgmUserPaused = false, _bgmWantPlay = false;
+const _bgmAudio = document.getElementById('bgmAudio');
+function _bgmSetIcon(playing){
+  document.getElementById('bgmPlay').style.display = playing ? 'block' : 'none';
+  document.getElementById('bgmMute').style.display = playing ? 'none' : 'block';
+}
+function _bgmLoadUrl(url){
+  if(!url || _bgmAudio.dataset.src === url) return;
+  _bgmAudio.dataset.src = url;
+  _bgmAudio.src = url; _bgmReady = true; _bgmAudio.load();
+  if(_bgmWantPlay && !_bgmUserPaused) _bgmAudio.play().catch(()=>{});
+}
+try{
+  const savedBgm = localStorage.getItem(LS + 'bgm');
+  _bgmLoadUrl(savedBgm || 'bgm.mp3');
+}catch(e){
+  _bgmLoadUrl('bgm.mp3');
+}
+window.bgmToggle = function(){
+  if(_bgmAdmin){ _bgmPick(); return; }
+  if(!_bgmReady){ showToast('Music will be added soon'); return; }
+  if(_bgmAudio.paused){ _bgmUserPaused = false; _bgmAudio.play().catch(()=>{}); }
+  else { _bgmUserPaused = true; _bgmAudio.pause(); }
+};
+_bgmAudio.addEventListener('play', () => _bgmSetIcon(true));
+_bgmAudio.addEventListener('pause', () => _bgmSetIcon(false));
+_bgmAudio.addEventListener('ended', () => _bgmSetIcon(false));
+function _bgmPick(){
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = 'audio/*';
+  inp.style.cssText = 'position:fixed;left:-9999px;';
+  document.body.appendChild(inp);
+  inp.onchange = function(){
+    const file = inp.files && inp.files[0];
+    if(!file){ inp.remove(); return; }
+    const url = URL.createObjectURL(file);
+    _bgmUserPaused = false; _bgmWantPlay = true;
+    _bgmLoadUrl(url);
+    showToast('MUSIC LOADED');
+    inp.remove();
+  };
+  inp.click();
+}
+
+// ── WISHES (localStorage-backed, works offline & on any static host) ──
+let _allWishes = [], _wishesShown = 6, _recentTs = 0;
+const WISH_PAGE = 6;
+
+function readWishes(){
+  try{ return JSON.parse(localStorage.getItem(LS + 'wishes') || '[]'); }catch(e){ return []; }
+}
+function saveWishes(arr){
+  try{ localStorage.setItem(LS + 'wishes', JSON.stringify(arr)); }catch(e){}
+}
+function loadWishes(){
+  _allWishes = readWishes();
+  const n = _allWishes.length;
+  document.getElementById('wishCount').textContent =
+    n ? (n + (n === 1 ? ' Wish & Blessing' : ' Wishes & Blessings')) : "Be the first to send your du'a";
+  renderWishes();
+}
+function renderWishes(){
+  const grid = document.getElementById('wgrid');
+  grid.textContent = '';
+  if(!_allWishes.length){
+    const e = document.createElement('div');
+    e.className = 'wish-empty';
+    e.textContent = "No wishes yet — be the first to send your du'a";
+    grid.appendChild(e);
+    document.getElementById('loadmore-wrap').style.display = 'none';
+    return;
+  }
+  _allWishes.slice(0, _wishesShown).forEach(w => grid.appendChild(wishCard(w)));
+  document.getElementById('loadmore-wrap').style.display = _allWishes.length > _wishesShown ? 'block' : 'none';
+}
+function wishCard(w){
+  const card = document.createElement('div'); card.className = 'wish';
+  const nm = document.createElement('div'); nm.className = 'wn'; nm.textContent = w.name || '';
+  const ms = document.createElement('div'); ms.className = 'wm'; ms.textContent = '"' + (w.msg || '') + '"';
+  const foot = document.createElement('div'); foot.className = 'wf';
+  const dt = document.createElement('span'); dt.className = 'wd'; dt.textContent = w.time || '';
+  const like = document.createElement('button'); like.className = 'wlike'; like.type = 'button';
+  if(localStorage.getItem(LS + 'liked_' + w.key)) like.classList.add('liked');
+  like.setAttribute('aria-label', 'Bless this wish');
+  const hsvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  hsvg.setAttribute('viewBox', '0 0 24 24'); hsvg.setAttribute('width', '13'); hsvg.setAttribute('height', '13');
+  const hp = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  hp.setAttribute('d', 'M12 21s-7.5-4.7-9.4-9A5.2 5.2 0 0 1 12 6.2 5.2 5.2 0 0 1 21.4 12c-1.9 4.3-9.4 9-9.4 9z');
+  hsvg.appendChild(hp);
+  const cnt = document.createElement('span');
+  cnt.textContent = w.likes ? String(w.likes) : '';
+  like.appendChild(hsvg); like.appendChild(cnt);
+  like.onclick = () => likeWish(w.key);
+  foot.appendChild(dt); foot.appendChild(like);
+  card.appendChild(nm); card.appendChild(ms); card.appendChild(foot);
+
+  if(w.reply && w.reply.msg){
+    const rb = document.createElement('div'); rb.className = 'wreply';
+    const rl = document.createElement('div'); rl.className = 'wreply-lbl'; rl.textContent = '↳ ' + COUPLE_LABEL;
+    const rm = document.createElement('div'); rm.className = 'wreply-msg'; rm.textContent = w.reply.msg;
+    rb.appendChild(rl); rb.appendChild(rm);
+    card.appendChild(rb);
+  }
+  if(adminMode){
+    const rbtn = document.createElement('button'); rbtn.className = 'wadmin'; rbtn.type = 'button';
+    rbtn.textContent = (w.reply && w.reply.msg) ? 'EDIT REPLY' : 'REPLY';
+    rbtn.onclick = () => openReplyEditor(card, w);
+    card.appendChild(rbtn);
+  }
+  return card;
+}
+function likeWish(key){
+  if(localStorage.getItem(LS + 'liked_' + key)) return;
+  localStorage.setItem(LS + 'liked_' + key, '1');
+  const list = readWishes();
+  const item = list.find(x => x.key === key);
+  if(item){ item.likes = (item.likes || 0) + 1; saveWishes(list); loadWishes(); }
+}
+function openReplyEditor(card, w){
+  if(card.querySelector('.wreply-edit')) return;
+  const box = document.createElement('div'); box.className = 'wreply-edit';
+  const ta = document.createElement('textarea');
+  ta.value = (w.reply && w.reply.msg) || '';
+  ta.placeholder = 'Write your reply...';
+  const row = document.createElement('div'); row.className = 'wreply-row';
+  const save = document.createElement('button'); save.type = 'button'; save.textContent = 'SAVE';
+  const del = document.createElement('button'); del.type = 'button'; del.className = 'ghost'; del.textContent = 'REMOVE';
+  const cancel = document.createElement('button'); cancel.type = 'button'; cancel.className = 'ghost'; cancel.textContent = 'CANCEL';
+  row.appendChild(save); row.appendChild(del); row.appendChild(cancel);
+  box.appendChild(ta); box.appendChild(row);
+  card.appendChild(box);
+  ta.focus();
+  cancel.onclick = () => box.remove();
+  save.onclick = () => {
+    const msg = ta.value.trim();
+    if(!msg){ showToast('Write a reply first', true); return; }
+    const list = readWishes();
+    const item = list.find(x => x.key === w.key);
+    if(item){ item.reply = { msg, ts: Date.now() }; saveWishes(list); loadWishes(); }
+    showToast('REPLY SAVED');
+  };
+  del.onclick = () => {
+    const list = readWishes();
+    const item = list.find(x => x.key === w.key);
+    if(item){ delete item.reply; saveWishes(list); loadWishes(); }
+    showToast('REPLY REMOVED');
+  };
+}
+function loadMore(){ _wishesShown += WISH_PAGE; renderWishes(); }
+function submitWish(){
+  const nameEl = document.getElementById('wisherName');
+  const msgEl = document.getElementById('wisherMsg');
+  const n = nameEl.value.trim(), m = msgEl.value.trim();
+  if(!n || !m){ showToast('Please enter your name and a wish.', true); return; }
+  const ts = Date.now();
+  if(ts - _recentTs < 5000){ showToast('Please wait a moment before sending another wish.', true); return; }
+  _recentTs = ts;
+  const list = readWishes();
+  list.unshift({
+    key: 'w_' + ts,
+    name: n,
+    msg: m,
+    time: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }),
+    ts: ts,
+    likes: 0
+  });
+  saveWishes(list);
+  nameEl.value = ''; msgEl.value = '';
+  loadWishes();
+  showToast('Your blessing has been sent');
+}
+
+// ── ADMIN ──
+function openAdminModal(){
+  if(adminMode){ exitAdmin(); return; }
+  document.getElementById('pinModal').classList.add('on');
+  const f = document.getElementById('pinInput'); f.value = ''; setTimeout(() => f.focus(), 80);
+}
+function closeAdminModal(){ document.getElementById('pinModal').classList.remove('on'); }
+function submitPin(){
+  const v = document.getElementById('pinInput').value.trim();
+  if(v.toUpperCase() !== ADMIN_PIN.toUpperCase()){ showToast('Incorrect PIN', true); return; }
+  closeAdminModal();
+  enterAdmin();
+}
+function enterAdmin(){
+  adminMode = true;
+  try{ sessionStorage.setItem(LS + 'admin', '1'); }catch(e){}
+  document.body.classList.add('admin-on');
+  document.getElementById('adminBar').classList.add('on');
+  _bgmAdmin = true;
+  document.getElementById('bgmBtn').classList.add('admin-mode');
+  renderWishes();
+  showToast('ADMIN MODE ON');
+}
+function exitAdmin(){
+  adminMode = false;
+  try{ sessionStorage.removeItem(LS + 'admin'); }catch(e){}
+  document.body.classList.remove('admin-on');
+  document.getElementById('adminBar').classList.remove('on');
+  document.getElementById('bgmBtn').classList.remove('admin-mode');
+  _bgmAdmin = false;
+  renderWishes();
+  showToast('Admin mode off');
+}
+document.getElementById('adminBtn').addEventListener('click', openAdminModal);
+document.getElementById('pinGo').addEventListener('click', submitPin);
+document.getElementById('pinCancel').addEventListener('click', closeAdminModal);
+document.getElementById('pinInput').addEventListener('keydown', e => { if(e.key === 'Enter') submitPin(); });
+document.getElementById('adminExit').addEventListener('click', exitAdmin);
+if(/[?&]admin(=|&|$)/.test(location.search)) openAdminModal();
+
+// ── PDF DOWNLOAD ──
+function loadScript(src){
+  return new Promise((res, rej) => {
+    const t = document.createElement('script'); t.src = src;
+    t.onload = res; t.onerror = () => rej(new Error('cdn'));
+    document.head.appendChild(t);
+  });
+}
+async function downloadPDF(){
+  const btn = document.getElementById('pdfDownloadBtn');
+  btn.disabled = true;
+  showToast('Preparing your invitation...');
+  document.body.classList.add('pdf-capturing');
+  try{
+    if(!window.html2canvas) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+    if(!window.jspdf) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    window.scrollTo(0, 0);
+    await new Promise(r => setTimeout(r, 450));
+    const target = document.querySelector('.page');
+    const canvas = await html2canvas(target, {
+      backgroundColor: '#ede3cf', useCORS: true, scale: Math.min(2, window.devicePixelRatio || 1),
+      windowWidth: target.scrollWidth, windowHeight: target.scrollHeight, scrollX: 0, scrollY: 0
+    });
+    const jsPDF = window.jspdf.jsPDF;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pw = 210, ph = 297;
+    const iw = pw, ih = canvas.height * pw / canvas.width;
+    const img = canvas.toDataURL('image/jpeg', 0.92);
+    let pos = 0, left = ih;
+    pdf.addImage(img, 'JPEG', 0, pos, iw, ih);
+    left -= ph;
+    while(left > 0){ pos -= ph; pdf.addPage(); pdf.addImage(img, 'JPEG', 0, pos, iw, ih); left -= ph; }
+    pdf.save('Sahal-and-Rabiya-Invitation.pdf');
+    showToast('Invitation saved');
+  }catch(e){
+    showToast('Opening print view instead...');
+    setTimeout(() => window.print(), 400);
+  }finally{
+    document.body.classList.remove('pdf-capturing');
+    btn.disabled = false;
+  }
+}
+document.getElementById('pdfDownloadBtn').addEventListener('click', downloadPDF);
+
+function cardDownloadHint(){ showToast('Saving the card... if it opens instead, press and hold to save.'); }
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadWishes();
+  try{ if(sessionStorage.getItem(LS + 'admin') === '1') enterAdmin(); }catch(e){}
+});
+</script>
+</body>
+</html>
